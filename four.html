@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="demoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Four</title>
+</head>
+<body>
+    <div class="container" ng-controller="SimpleController" >
+        Name: <input type="text" ng-model="name" /> {{name}}
+        <h3>Looping with the ng-repeat Directives</h3>
+        <ul>
+            <li ng-repeat="cust in customers | filter:name | orderBy:'city'">{{cust.name | uppercase}} - {{cust.city | lowercase}}</li>
+        </ul>
+    </div>
+    
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript">
+        var demoApp = angular.module('demoApp', []); 
+        var controllers = {};
+        controllers.SimpleController = function ($scope){
+            $scope.customers = [
+                {name:'John Smith',city:'Phoenix'},
+                {name:'Jonh Doe',city:'New York'},
+                {name:'Jane Doe',city:'San Francisco'}
+            ];
+        };
+        demoApp.controller(controllers);
+    </script>
+</body>
+</html>
